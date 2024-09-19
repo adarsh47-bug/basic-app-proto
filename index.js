@@ -9,7 +9,6 @@ const conversationRoutes = require('./routes/conversationsRoutes'); // Conversat
 const messageRoutes = require('./routes/messagesRoutes'); // Message routes (chat messages)
 const eventRoutes = require('./routes/eventRoutes'); // Event-related routes
 const { notFound, errorHandler } = require('./middleware/errorMiddleware'); // Custom error handlers
-
 const cors = require('cors');
 
 // Load environment variables
@@ -19,6 +18,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// Built-in body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
