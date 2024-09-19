@@ -1,8 +1,11 @@
 const express = require('express');
-const cors = require('cors');
+const dotenv = require('dotenv');
 const connectDB = require('./config/db'); // Import the MongoDB connection function
 const postRoutes = require('./routes/postRoutes'); // Post-related routes
+const cors = require('cors');
 
+// Load environment variables
+dotenv.config();
 
 // Initialize MongoDB connection
 connectDB();
