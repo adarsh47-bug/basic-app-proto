@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db'); // Import the MongoDB connection function
 const postRoutes = require('./routes/postRoutes'); // Post-related routes
+const { notFound, errorHandler } = require('./middleware/errorMiddleware'); // Custom error handlers
 const cors = require('cors');
 
 // Load environment variables
@@ -11,7 +12,6 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const port = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -29,6 +29,7 @@ app.use('/api/posts', postRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
