@@ -8,6 +8,7 @@ const postRoutes = require('./routes/postRoutes'); // Post-related routes
 const conversationRoutes = require('./routes/conversationsRoutes'); // Conversation routes (chat)
 const messageRoutes = require('./routes/messagesRoutes'); // Message routes (chat messages)
 const eventRoutes = require('./routes/eventRoutes'); // Event-related routes
+const locationRoutes = require('./routes/locationRoutes'); // Location-related routes
 const { notFound, errorHandler } = require('./middleware/errorMiddleware'); // Custom error handlers
 const cors = require('cors');
 
@@ -40,6 +41,9 @@ app.use('/api/conversations', conversationRoutes); // Handles chat conversations
 app.use('/api/messages', messageRoutes); // Handles chat messages
 app.use('/api/posts', postRoutes); // Handles post-related API requests
 app.use('/api/events', eventRoutes); // Handles event-related API requests
+
+// Mounting API routes
+app.use('/api/locations', locationRoutes); // Handles location-related API requests
 
 app.use(notFound);
 app.use(errorHandler);
